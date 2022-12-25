@@ -43,6 +43,8 @@ body {
     height: 0;
 }
 
-#individualDivs:hover {
-    
+button {
+    box-sizing: border-box;
+    min-width: 80px;
+    max-height: 30px;
 }
