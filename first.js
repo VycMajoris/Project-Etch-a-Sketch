@@ -15,8 +15,8 @@ console.log(createFirstIndividualDiv.id); */
 createDivBtn.addEventListener('click', createDiv);
 
 
-const hover = document.getElementById('gridDivs');
-hover.addEventListener('mouseover', hoverEffect);
+//const hover = document.getElementById('gridDivs');
+//hover.addEventListener('mouseover', hoverEffect);
 
 // hover effect
 function hoverEffect (e) {
@@ -28,10 +28,9 @@ function hoverEffect (e) {
     let blueValue = Math.floor(Math.random() * 255);
     let rgbValues = [redValue, greenValue, blueValue].join();
     rgbValues = 'rgb' + '(' + rgbValues + ')';
-    console.log(rgbValues);
-    console.log(e.target);
+    
     e.target.style.backgroundColor = rgbValues;
-    e.target.textContent = "hello";
+    
 }
 
 
@@ -43,26 +42,37 @@ function createDiv (e) {
         containerDiv.removeChild(containerDiv.firstChild);
       } 
 
-    let divNumber = prompt("How many divs do you want in a single line?", 0);
+    let divNumber = prompt("How many divs do you want in a single line? (0-50)", 0);
+
+    while (true) {
     
+    if (divNumber<=50) {
     
     let divSize = calculateDivSize(divNumber);
 
     for (let i=0; i<divNumber**2; i++) {
         
         let newDiv = document.createElement('div');
-        newDiv.textContent = "Hiya";
+        
         //assign the index of an array as the size property of an element:
         newDiv.style.width = divSize[0] +'px';
         newDiv.style.height = divSize[1]+'px';
         //newDiv.style.display= 'inline';
         container.appendChild(newDiv);
         newDiv.id = 'gridDivs';
+        newDiv.style.borderStyle = 'solid';
+        newDiv.style.borderWidth = '1px';
         newDiv.addEventListener('mouseover', hoverEffect);
+        
 
-    }
+    } 
+    break;
+} else {
+    divNumber = prompt("How many divs do you want in a single line? (0-50)", 0);
+}
+
     
-    
+} 
 }
 
 
